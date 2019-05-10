@@ -1,0 +1,31 @@
+#注册中心
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka/
+server:
+  #  端口
+  port: 9999
+spring:
+  kafka:
+    bootstrap-servers: 47.107.165.252:9092
+    consumer:
+      group-id: myGroup
+    template:    # 指定默认topic id
+      default-topic: travelsky
+    listener:   # 指定listener 容器中的线程数，用于提高并发量
+      concurrency: 5
+    producer:  # 每次批量发送消息的数量
+      batch-size: 1000
+
+  application:
+    name: adhprovider
+    mvc:
+      #      静态资源
+      resources:
+        static-locations: classpath:/static
+  http:
+    #    编码
+    encoding:
+      charset: utf-8
+      enabled: true
